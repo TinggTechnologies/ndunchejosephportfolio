@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { FaHome, FaUser, FaBriefcase, FaGraduationCap, FaEnvelope } from 'react-icons/fa';
 import './Header.css';
 
 export default function Header() {
@@ -17,11 +18,11 @@ export default function Header() {
   const isActive = (path) => location.pathname === path;
 
   const navItems = [
-    { path: '/', label: 'Home', icon: '🏠' },
-    { path: '/about', label: 'About', icon: '👤' },
-    { path: '/portfolio', label: 'Portfolio', icon: '💼' },
-    { path: '/education', label: 'Education', icon: '🎓' },
-    { path: '/contact', label: 'Contact', icon: '📧' },
+    { path: '/', label: 'Home', icon: <FaHome /> },
+    { path: '/about', label: 'About', icon: <FaUser /> },
+    { path: '/portfolio', label: 'Portfolio', icon: <FaBriefcase /> },
+    { path: '/education', label: 'Education', icon: <FaGraduationCap /> },
+    { path: '/contact', label: 'Contact', icon: <FaEnvelope /> },
   ];
 
   return (

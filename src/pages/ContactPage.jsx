@@ -22,9 +22,10 @@ export default function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Create mailto link with form data
-    const mailtoLink = `mailto:ndunchej@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-    window.location.href = mailtoLink;
+    // Create WhatsApp message link
+    const message = `Name: ${formData.name}\nEmail: ${formData.email}\nSubject: ${formData.subject}\n\nMessage:\n${formData.message}`;
+    const whatsappLink = `https://wa.me/2347031882197?text=${encodeURIComponent(message)}`;
+    window.open(whatsappLink, '_blank');
   };
 
   const contactInfo = [
