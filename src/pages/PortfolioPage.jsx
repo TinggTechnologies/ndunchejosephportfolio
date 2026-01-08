@@ -1,3 +1,4 @@
+import { FaBolt, FaChartLine, FaSearch } from 'react-icons/fa';
 import PageLayout from '../components/layout/PageLayout';
 import Card, { CardContent, CardHeader } from '../components/ui/Card';
 import './PortfolioPage.css';
@@ -21,7 +22,11 @@ export default function PortfolioPage() {
       position: "Backend Engineer",
       date: "2025",
       details: [
-        "Designed and developed a robust backend system"
+        "Designed and developed a robust backend system using Node.js and Express framework",
+        "Implemented RESTful APIs and microservices architecture for scalable application development",
+        "Integrated third-party services and payment gateways to enhance platform functionality",
+        "Optimized database queries and implemented caching strategies, improving response times by 45%",
+        "Collaborated with frontend developers to ensure seamless API integration and data flow"
       ]
     },
     {
@@ -65,7 +70,7 @@ export default function PortfolioPage() {
       title: "COVID-19 Detection using Deep Learning",
       type: "AI/ML Project",
       date: "2023",
-      image: "/projects/covid-detection.jpeg",
+      image: "/projects/covid19.jpg",
       details: [
         "Implemented COVID-19 detection system using deep learning techniques",
         "Utilized convolutional neural networks for medical image analysis",
@@ -77,7 +82,7 @@ export default function PortfolioPage() {
       title: "Smart Campus Mobile App",
       type: "Mobile Development",
       date: "2021 - 2023",
-      image: "/projects/smart-campus.jpeg",
+      image: "/projects/smartcampus.png",
       details: [
         "Led development of Android application for educational institution",
         "Achieved 12,000+ downloads within first month of launch",
@@ -90,52 +95,40 @@ export default function PortfolioPage() {
       type: "Fullstack Web Development",
       date: "2023 - 2024",
       image: "/projects/sms.png",
+      websites: [
+        "https://florierenparklaneis.com.ng",
+        "https://greatkingsacad.com.ng"
+      ],
       details: [
         "Developed comprehensive school management portal",
         "Serves 10,000+ monthly active users with minimal downtime",
         "Built with modern web technologies and responsive design",
-        "Implemented secure authentication and role-based access control"
+        "Implemented secure authentication and role-based access control",
+        "Deployed across multiple school domains"
       ]
     }
   ];
 
   const certifications = [
     {
-      name: "Google Data Analytics Professional Certificate",
-      file: "/certifications/Google Data Analytics Professional Certificate.pdf",
-      issuer: "Google",
-      preview: "/certifications/Google Data Analytics Professional Certificate.pdf"
+      name: "Bachelor's Degree Computer Science",
+      file: "/certifications/bsc.pdf",
+      issuer: "FUOYE",
+      preview: "/certifications/bsc.pdf"
     },
-    {
-      name: "Accenture & Forage Training Certificate",
-      file: "/certifications/Accenture North America Forage Certificate.pdf",
-      issuer: "Accenture",
-      preview: "/certifications/Accenture North America Forage Certificate.pdf"
-    },
-    {
-      name: "Data For Health And Climate Africa Certificate",
-      file: "/certifications/CAN Certificate.pdf",
-      issuer: "Climate Action Network",
-      preview: "/certifications/CAN Certificate.pdf"
-    },
-    {
-      name: "Deloitte Internship Certificate",
-      file: "/certifications/Delloitte Internship certificate.pdf",
-      issuer: "Deloitte",
-      preview: "/certifications/Delloitte Internship certificate.pdf"
-    },
-    {
-      name: "CognifyZ Internship Certificate",
-      file: "/certifications/Cognify Internship Certificate.pdf",
-      issuer: "CognifyZ Technologies",
-      preview: "/certifications/Cognify Internship Certificate.pdf"
-    }
+  
   ];
 
   const openCertificate = (cert, event) => {
     event.preventDefault();
     event.stopPropagation();
     window.open(cert.file, '_blank');
+  };
+
+  const openWebsite = (url, event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    window.open(url, '_blank');
   };
 
 
@@ -210,7 +203,17 @@ export default function PortfolioPage() {
             <h2 className="section-heading">Key Projects</h2>
             <div className="projects-grid">
               {projects.map((project, index) => (
-                <Card key={index} className="project-card">
+                <Card 
+                  key={index} 
+                  className={`project-card ${(project.website || project.websites) ? 'clickable' : ''}`}
+                  onClick={(e) => {
+                    if (project.websites && project.websites.length > 0) {
+                      openWebsite(project.websites[0], e);
+                    } else if (project.website) {
+                      openWebsite(project.website, e);
+                    }
+                  }}
+                >
                   <div className="project-image-container">
                     <img 
                       src={project.image} 
@@ -219,6 +222,9 @@ export default function PortfolioPage() {
                     />
                     <div className="project-overlay">
                       <span className="project-type">{project.type}</span>
+                      {(project.website || project.websites) && (
+                        <span className="project-link-hint">Click to visit website</span>
+                      )}
                     </div>
                   </div>
                   <CardContent>
@@ -231,6 +237,30 @@ export default function PortfolioPage() {
                         <li key={idx}>{detail}</li>
                       ))}
                     </ul>
+                    {project.websites ? (
+                      <div className="project-websites">
+                        <span className="website-label">Visit: </span>
+                        <div className="website-links">
+                          {project.websites.map((url, idx) => (
+                            <span 
+                              key={idx}
+                              className="website-url clickable-link"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                openWebsite(url, e);
+                              }}
+                            >
+                              {url.replace('https://', '')}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    ) : project.website && (
+                      <div className="project-website">
+                        <span className="website-label">Visit: </span>
+                        <span className="website-url">{project.website.replace('https://', '')}</span>
+                      </div>
+                    )}
                   </CardContent>
                 </Card>
               ))}
@@ -287,16 +317,16 @@ export default function PortfolioPage() {
               <CardContent>
                 <div className="achievements-list">
                   <div className="achievement-item">
-                    <span className="achievement-icon">⚡</span>
-                    <span className="achievement-text">Automated data cleaning processes, reducing manual effort by 40%</span>
+                    <span className="achievement-icon"><FaBolt /></span>
+                    <span className="achievement-text">Led development of mobile applications achieving 12,000+ downloads within first month of launch</span>
                   </div>
                   <div className="achievement-item">
-                    <span className="achievement-icon">📈</span>
-                    <span className="achievement-text">Analyzed large datasets using Excel and Power Query, leading to an improvement in operational efficiency</span>
+                    <span className="achievement-icon"><FaChartLine /></span>
+                    <span className="achievement-text">Implemented CI/CD pipelines reducing deployment cycles by 30% and improving system reliability</span>
                   </div>
                   <div className="achievement-item">
-                    <span className="achievement-icon">🔍</span>
-                    <span className="achievement-text">Conducted market research and competitive analysis to identify emerging industry trends</span>
+                    <span className="achievement-icon"><FaSearch /></span>
+                    <span className="achievement-text">Developed school management systems serving 10,000+ monthly active users across multiple domains</span>
                   </div>
                 </div>
               </CardContent>

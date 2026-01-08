@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaLaptopCode, FaTools, FaBullseye, FaRocket } from 'react-icons/fa';
 import PageLayout from '../components/layout/PageLayout';
 import Card, { CardContent, CardHeader } from '../components/ui/Card';
 import './EducationPage.css';
@@ -63,22 +64,22 @@ export default function EducationPage() {
               <h2 className="info-heading">How My Education Supports Software Development</h2>
               <div className="info-grid">
                 <div className="info-item">
-                  <div className="info-icon">💻</div>
+                  <div className="info-icon"><FaLaptopCode /></div>
                   <h3>Programming Fundamentals</h3>
                   <p>Computer science education provided strong foundation in programming languages, algorithms, and software design patterns.</p>
                 </div>
                 <div className="info-item">
-                  <div className="info-icon">🏗️</div>
+                  <div className="info-icon"><FaTools /></div>
                   <h3>System Architecture</h3>
                   <p>Deep understanding of system design, database management, and software architecture principles for scalable applications.</p>
                 </div>
                 <div className="info-item">
-                  <div className="info-icon">🔧</div>
+                  <div className="info-icon"><FaBullseye /></div>
                   <h3>Problem Solving</h3>
                   <p>Analytical thinking and systematic approach to complex problem-solving essential for software engineering challenges.</p>
                 </div>
                 <div className="info-item">
-                  <div className="info-icon">🚀</div>
+                  <div className="info-icon"><FaRocket /></div>
                   <h3>Modern Technologies</h3>
                   <p>Continuous learning mindset and academic foundation enable quick adaptation to emerging technologies and frameworks.</p>
                 </div>

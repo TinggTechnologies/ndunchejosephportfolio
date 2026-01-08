@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaPalette, FaCogs, FaTools } from 'react-icons/fa';
 import Card from '../ui/Card';
 import './Skills.css';
 
@@ -6,7 +7,7 @@ export default function Skills() {
   const skillCategories = [
     {
       title: 'Frontend Technologies',
-      icon: '🎨',
+      icon: <FaPalette />,
       skills: [
         { name: 'React', level: 95 },
         { name: 'React Native', level: 90 },
@@ -18,7 +19,7 @@ export default function Skills() {
     },
     {
       title: 'Backend & Database',
-      icon: '⚙️',
+      icon: <FaCogs />,
       skills: [
         { name: 'Node.js', level: 90 },
         { name: 'Express', level: 88 },
@@ -35,7 +36,7 @@ export default function Skills() {
     },
     {
       title: 'Development Tools & Skills',
-      icon: '🔧',
+      icon: <FaTools />,
       skills: [
         { name: 'Git', level: 92 },
         { name: 'Docker', level: 80 },
