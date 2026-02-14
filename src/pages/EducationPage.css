@@ -69,7 +69,7 @@
 
 .education-institution {
   font-size: 1rem;
-  color: #94a3b8;
+  color: #e2e8f0;
   margin: 0;
 }
 
@@ -99,7 +99,7 @@
 .education-description {
   font-size: 1.05rem;
   line-height: 1.8;
-  color: #cbd5e1;
+  color: #f1f5f9;
   margin: 0;
 }
 
@@ -153,7 +153,7 @@
 .info-item p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #94a3b8;
+  color: #e2e8f0;
   margin: 0;
 }
 
@@ -162,6 +162,7 @@
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -194,4 +195,3 @@
     grid-template-columns: 1fr;
   }
 }
-

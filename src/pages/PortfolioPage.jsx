@@ -9,7 +9,7 @@ export default function PortfolioPage() {
       company: "Liberty Assured",
       program: "Software Engineer",
       position: "Software Engineer",
-      date: "2025",
+      date: "2025-2026",
       details: [
         "Developing financial technology solutions for nano-micro businesses to SME and personal finances",
         "Building systems for civil servant loans, agent cluster loans, and micro savings loan products",
@@ -116,7 +116,7 @@ export default function PortfolioPage() {
       issuer: "FUOYE",
       preview: "/certifications/bsc.pdf"
     },
-  
+
   ];
 
   const openCertificate = (cert, event) => {
@@ -203,8 +203,8 @@ export default function PortfolioPage() {
             <h2 className="section-heading">Key Projects</h2>
             <div className="projects-grid">
               {projects.map((project, index) => (
-                <Card 
-                  key={index} 
+                <Card
+                  key={index}
                   className={`project-card ${(project.website || project.websites) ? 'clickable' : ''}`}
                   onClick={(e) => {
                     if (project.websites && project.websites.length > 0) {
@@ -215,8 +215,8 @@ export default function PortfolioPage() {
                   }}
                 >
                   <div className="project-image-container">
-                    <img 
-                      src={project.image} 
+                    <img
+                      src={project.image}
                       alt={project.title}
                       className="project-image"
                     />
@@ -242,7 +242,7 @@ export default function PortfolioPage() {
                         <span className="website-label">Visit: </span>
                         <div className="website-links">
                           {project.websites.map((url, idx) => (
-                            <span 
+                            <span
                               key={idx}
                               className="website-url clickable-link"
                               onClick={(e) => {
