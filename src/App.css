@@ -10,44 +10,59 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #0f172a;
-  color: #cbd5e1;
+  font-family: 'Outfit', sans-serif;
+  background: var(--bg-dark);
+  color: var(--text-primary);
   overflow-x: hidden;
+  position: relative;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+/* Background Animated Gradient Mesh */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(30, 64, 175, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 90% 80%, rgba(14, 165, 233, 0.15) 0%, transparent 60%);
+  animation: bgAnimation 20s infinite alternate;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes bgAnimation {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-2%, -2%);
+  }
 }
 
 /* Scrollbar Styles */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #1e293b;
+  background: var(--bg-dark);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #14b8a6 0%, #0d9488 100%);
-  border-radius: 5px;
+  background: var(--gradient-text);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #0f766e 0%, #134e4a 100%);
+  background: var(--gradient-primary);
 }
 
 /* Selection Styles */
 ::selection {
-  background: rgba(20, 184, 166, 0.3);
-  color: white;
-}
-
-::-moz-selection {
-  background: rgba(20, 184, 166, 0.3);
+  background: rgba(99, 102, 241, 0.3);
   color: white;
 }
